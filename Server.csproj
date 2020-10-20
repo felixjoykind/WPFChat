@@ -57,18 +57,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BaseViewModel.cs" />
-    <Compile Include="ChatArgs.cs" />
-    <Compile Include="Client.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="Models\ChatArgs.cs" />
+    <Compile Include="Models\Client.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Server.cs" />
-    <Compile Include="ServerArgs.cs" />
+    <Compile Include="Models\Server.cs" />
+    <Compile Include="Models\ServerArgs.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
