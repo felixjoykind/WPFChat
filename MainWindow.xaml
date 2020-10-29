@@ -74,6 +74,11 @@
                     Background="#f4a261" 
                     Margin="5, 0" 
                      Foreground="Gray"/>
+            <TextBox Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" x:Name="addressTextbox"
+                    Background="#f4a261" 
+                    Margin="5, 5" 
+                    Foreground="Gray"
+                     IsReadOnly="True"/>
             <Button Command="{Binding StartServerCommand}"
                     Margin="5, 5" 
                     Foreground="White">Start Server</Button>

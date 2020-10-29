@@ -111,7 +111,7 @@ namespace WPFChat
             // якщо щось введенор не правильно
             if (!isPortValid || !isAddressValid || !isUsernameValid)
             {
-                DisplayError("Port, address or username value is invalid!");
+                DisplayError("Port, address or username value is !");
                 return false;
             }
 

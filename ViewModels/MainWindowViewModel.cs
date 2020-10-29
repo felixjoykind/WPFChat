@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Input;
@@ -20,6 +21,13 @@ namespace WPFChat
         {
             get => _Port;
             set => Set(ref _Port, value);
+        }
+
+        private string _Address = string.Empty;
+        public string Address
+        {
+            get => _Address;
+            set => Set(ref _Address, value);
         }
 
         private bool _isPortTextboxEnabled = true;
@@ -45,7 +53,7 @@ namespace WPFChat
             catch (Exception e)
             {
                 StopServer();
-                DisplayError(e.Message);
+                DisplayError(e.ToString());
             }
         }
 
@@ -75,6 +83,7 @@ namespace WPFChat
             }
 
             server = new Server(socketPort);
+            Address = GetLocalIP().ToString();
             // підписуємося на події сервера
             server.OnClientConnected += Server_OnClientConnected;
             server.OnClientDisconnected += Server_OnClientDisconnected;
@@ -143,6 +152,17 @@ namespace WPFChat
             {
                 Messages.Add($"{DateTime.Now.ToShortTimeString()}|{author} : {message}");
             });
+        }
+
+        private IPAddress GetLocalIP()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    return ip;
+            }
+            return IPAddress.Parse("127.0.0.1");
         }
 
         private void DisplayError(string message) =>
