@@ -16,7 +16,6 @@ namespace WPFChat
         public Socket Socket { get; private set; }
         public List<Client> Clients { get; private set; }
         public int Port { get; private set; }
-        private readonly byte[] buffer = new byte[1024];
 
         public bool isRunning { get; private set; } = false;
 
@@ -84,7 +83,7 @@ namespace WPFChat
                 while (isRunning && clientObject.isConnected) // поки сервер працює (isRunning) та клієнта підключено(clientObject.isConnected)
                 {
                     string message = GetClientMessage(clientObject);
-                    // відключаємо клієнта, якщо отримали пусте повідомлення (клієнт не можу відкправити пустоту)
+                    // відключаємо клієнта, якщо отримали пусте повідомлення (клієнт не може відкправити пустоту)
                     if (message.Trim().Length == 0)
                     {
                         RemoveConnection(clientObject.Id);

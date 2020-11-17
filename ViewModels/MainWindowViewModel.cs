@@ -10,7 +10,6 @@ namespace WPFChat
     class MainWindowViewModel : BaseViewModel
     {
         private Server server;
-        private Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         public ObservableCollection<string> Messages { get; private set; }
         public ObservableCollection<string> Users { get; private set; }
 
@@ -105,6 +104,7 @@ namespace WPFChat
             server.Stop();
             isRunning = false;
             isPortTextboxEnabled = true;
+            Address = string.Empty;
         }
 
         private void Server_OnClientConnected(object sender, ServerArgs sa)
