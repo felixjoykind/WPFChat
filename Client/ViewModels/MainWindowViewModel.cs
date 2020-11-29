@@ -159,7 +159,7 @@ namespace WPFChat
             client.Disconnect();
             isConnected = false;
             isTextboxEnabled = true;
-            WriteMessage("You were disconncted from the server!");
+            WriteMessage("You were disconnected from the server!");
         }
 
         private void WriteMessage(string message)
